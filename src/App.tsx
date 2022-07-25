@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "./component/Auth";
+import Contribute from "./component/Contribute";
 import { login, logout, selectUser } from "./features/userSlice";
 import { auth } from "./firebase";
 
@@ -26,7 +27,7 @@ const App: FC = () => {
       unSubscribe();
     };
   }, [dispatch]);
-  return <Auth />;
+  return <>{user.userId ? <Contribute /> : <Auth />}</>;
 };
 
 export default App;
