@@ -37,19 +37,24 @@ const Contribute: FC = () => {
     };
   }, []);
   return (
-    <div>
+    <>
       <InputDiary />
-      {posts.map((post) => (
-        <Post
-          postId={post.id}
-          message={post.message}
-          postedImage={post.postedImage}
-          timeStamp={post.timestamp}
-          username={post.username}
-          userImage={post.userImage}
-        />
-      ))}
-    </div>
+      {posts[0]?.id && (
+        <>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              postId={post.id}
+              message={post.message}
+              postedImage={post.postedImage}
+              timeStamp={post.timestamp}
+              username={post.username}
+              userImage={post.userImage}
+            />
+          ))}
+        </>
+      )}
+    </>
   );
 };
 
