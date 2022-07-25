@@ -2,6 +2,7 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { FC, useEffect, useState } from "react";
 import { db } from "../firebase";
 import { InputDiary } from "./InputDiary";
+import Post from "./Post";
 const Contribute: FC = () => {
   const [posts, setPosts] = useState([
     {
@@ -38,6 +39,16 @@ const Contribute: FC = () => {
   return (
     <div>
       <InputDiary />
+      {posts.map((post) => (
+        <Post
+          postId={post.id}
+          message={post.message}
+          postedImage={post.postedImage}
+          timeStamp={post.timestamp}
+          username={post.username}
+          userImage={post.userImage}
+        />
+      ))}
     </div>
   );
 };
