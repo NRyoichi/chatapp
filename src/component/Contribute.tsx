@@ -1,6 +1,7 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { FC, useEffect, useState } from "react";
 import { db } from "../firebase";
+import { InputDiary } from "./InputDiary";
 const Contribute: FC = () => {
   const [posts, setPosts] = useState([
     {
@@ -34,7 +35,11 @@ const Contribute: FC = () => {
       getQuery();
     };
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      <InputDiary />
+    </div>
+  );
 };
 
 export default Contribute;
