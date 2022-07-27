@@ -1,11 +1,12 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
+import styles from "../styles/InputDiary.module.css";
 import Avatar from "@mui/material/Avatar";
 import { selectUser } from "../features/userSlice";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { Button, IconButton } from "@mui/material";
+import { Button, FormControl, IconButton, TextField } from "@mui/material";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 
 export const InputDiary: FC = () => {
@@ -62,30 +63,42 @@ export const InputDiary: FC = () => {
   return (
     <>
       <form onSubmit={postDiary}>
-        <div>
+        <div className={styles.input_form}>
           <Avatar
+            className={styles.post_avator}
             src={userInfo.photoUrl}
             onClick={async () => {
               await auth.signOut();
             }}
           />
-          <input
-            type="text"
-            placeholder="What is happend"
-            autoFocus
-            value={postedMessage}
-            onChange={(event) => setPostedMessage(event.target.value)}
-          />
+          <FormControl sx={{ m: 1 }} variant="standard">
+            <TextField
+              className={styles.daiary_input}
+              type="text"
+              placeholder="What is happend"
+              autoFocus
+              value={postedMessage}
+              onChange={(event) => setPostedMessage(event.target.value)}
+            />
+          </FormControl>
           <IconButton>
             <label>
               <AddPhotoAlternateIcon />
-              <input type="file" onChange={onChangePostedImageHundler} />
+              <input
+                type="file"
+                onChange={onChangePostedImageHundler}
+                className={styles.fileinput_hiddenIcon}
+              />
             </label>
           </IconButton>
+          <Button
+            className={styles.post_button}
+            type="submit"
+            disabled={!postedMessage}
+          >
+            Post
+          </Button>
         </div>
-        <Button type="submit" disabled={!postedMessage}>
-          Post
-        </Button>
       </form>
     </>
   );

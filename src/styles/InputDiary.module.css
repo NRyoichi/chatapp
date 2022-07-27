@@ -1,0 +1,38 @@
+.input_form {
+  text-align: center;
+  margin: 40px;
+  position: relative;
+  display: flex;
+  border-style: solid 1px;
+}
+
+.fileinput_hiddenIcon {
+  cursor: pointer;
+  display: none;
+}
+.post_button {
+  background-color: #00bfff !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 800 !important;
+  text-transform: inherit !important;
+  border-radius: 20px;
+  width: 80px;
+  height: 40px !important;
+  margin-top: 15px !important;
+  cursor: pointer;
+}
+.post_avator {
+  cursor: pointer;
+  margin-top: 2px;
+}
+.daiary_input {
+  margin-left: 40px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  color: #333333;
+  font-size: 18px;
+}
